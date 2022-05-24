@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "59975093167",
+    "project_id": "geoflutter-c3f57",
+    "storage_bucket": "geoflutter-c3f57.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59975093167:android:bcb92393e2561a29d77d5a",
+        "android_client_info": {
+          "package_name": "com.example.geoquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "59975093167-lb8akcc9lrqui67elof53sdttceqnd6o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAly078VvpTBoQr4YAihOpb8bIFaGpp3ME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "59975093167-lb8akcc9lrqui67elof53sdttceqnd6o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "59975093167-atc62kjag2qo5i2rkm5kh8o5jd2gvqfb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.geoquiz"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
