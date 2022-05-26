@@ -32,6 +32,10 @@ dependencies:
   flutter_bloc: ^8.0.1
   firebase_core: ^1.17.0
   firebase_auth: ^3.3.18
+  email_validator: ^2.0.1
+  google_sign_in: ^5.2.1
+  flutter_localizations:
+    sdk: flutter
   flutter:
     sdk: flutter
 

@@ -50,11 +50,21 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Demo app_test`
-  String get home_app_bar_title {
+  /// `Geo quiz`
+  String get sign_in_app_bar_title {
     return Intl.message(
-      'Demo app_test',
-      name: 'home_app_bar_title',
+      'Geo quiz',
+      name: 'sign_in_app_bar_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in`
+  String get sign_in_title {
+    return Intl.message(
+      'Sign in',
+      name: 'sign_in_title',
       desc: '',
       args: [],
     );
