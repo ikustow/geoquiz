@@ -31,7 +31,6 @@ class QuestionPage extends StatelessWidget {
             }
             if (state is QuestionLoadedState) {
               return Column(
-
                 children: [
                   MainQuestionInfo(questionInfo: state.question,),
                   ListOfAnswers(answers: state.answers,),
