@@ -3,6 +3,7 @@ import 'package:geoquiz/question/widgets.dart';
 
 import '../models/answer.dart';
 import '../models/question.dart';
+import '../theme.dart';
 
 class RightAnswerPage extends StatelessWidget {
   final Question questionInfo;
@@ -37,10 +38,11 @@ class RightListOfAnswers extends StatelessWidget {
           itemCount: answers.length,
           itemBuilder: (BuildContext context, int index) {
             return ElevatedButton(
+             style: (answers[index].right == true)
+                 ? AppButtonStyle.RightButton
+                 : AppButtonStyle.DefaultButton,
               child:Text(answers[index].description, style: TextStyle(fontSize: 22)),
-              onPressed: (){
-
-              },
+              onPressed: (){},
             );
           }
       );
