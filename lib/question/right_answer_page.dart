@@ -21,7 +21,6 @@ class RightAnswerPage extends StatelessWidget {
       ),
     );
   }
-
 }
 
 class RightListOfAnswers extends StatelessWidget {
