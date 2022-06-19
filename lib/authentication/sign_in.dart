@@ -4,6 +4,7 @@ import 'package:geoquiz/authentication/details_page.dart';
 import 'package:geoquiz/authentication/sign_up.dart';
 import 'package:geoquiz/generated/l10n.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:geoquiz/home/home.dart';
 
 import 'bloc/auth_bloc.dart';
 
@@ -37,7 +38,7 @@ class _SignInState extends State<SignIn> {
           if (state is Authenticated) {
             // Navigating to the dashboard screen if the user is authenticated
             Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const DetailsPageWidget()));
+                MaterialPageRoute(builder: (context) => const HomePage()));
           }
           if (state is AuthError) {
             // Showing the error message if the user has entered invalid credentials
