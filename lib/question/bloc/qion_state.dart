@@ -14,6 +14,11 @@ class QuestionLoadingState extends QuestionState {
   List<Object> get props => [];
 }
 
+class QuestionCheckState extends QuestionState {
+  @override
+  List<Object> get props => [];
+}
+
 
 class QuestionLoadedState extends QuestionState {
 

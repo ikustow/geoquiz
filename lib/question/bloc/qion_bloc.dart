@@ -24,5 +24,10 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
         final answers = await _airtableService.getAirtableAnswersByQuestion(questionInfo);
         emit(QuestionLoadedState(questionInfo,answers));
     });
+
+    on<checkAnswerEvent>((event, emit)  async  {
+
+      emit(QuestionCheckState());
+    });
   }
 }

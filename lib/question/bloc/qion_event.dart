@@ -17,3 +17,11 @@ class LoadQuestionApiEvent extends QuestionEvent {
   // TODO: implement props
   List<Object?> get props => [];
 }
+
+class checkAnswerEvent extends QuestionEvent {
+
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+}
