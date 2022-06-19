@@ -19,7 +19,6 @@ class RightAnswerPage extends StatelessWidget {
           MainQuestionInfo(questionInfo: questionInfo,),
           RightListOfAnswers(answers: answers,),
         ],
-
       ),
     );
   }
