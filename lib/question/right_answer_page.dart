@@ -18,10 +18,10 @@ class RightAnswerPage extends StatelessWidget {
           MainQuestionInfo(questionInfo: questionInfo,),
           RightListOfAnswers(answers: answers,),
         ],
+
       ),
     );
   }
-
 }
 
 class RightListOfAnswers extends StatelessWidget {
