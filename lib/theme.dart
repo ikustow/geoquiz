@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 
 abstract class AppButtonStyle {
   static const Color rightColor = Colors.green;
+  static const Color rightTextColor = Colors.white;
   static const Color primaryColor = Colors.indigo;
 
   static final ButtonStyle RightButton = ButtonStyle(
 
-    foregroundColor: MaterialStateProperty.all(rightColor),
+    foregroundColor: MaterialStateProperty.all(rightTextColor),
+    backgroundColor: MaterialStateProperty.all(rightColor),
     textStyle: MaterialStateProperty.all(
       TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w300,
+        fontSize: 24,
+        fontWeight: FontWeight.w800,
       ),
     ),
     padding: MaterialStateProperty.all(
@@ -19,10 +21,10 @@ abstract class AppButtonStyle {
 
   static final ButtonStyle DefaultButton = ButtonStyle(
 
-    foregroundColor: MaterialStateProperty.all(primaryColor),
+    foregroundColor: MaterialStateProperty.all(rightTextColor),
     textStyle: MaterialStateProperty.all(
       TextStyle(
-        fontSize: 16,
+        fontSize: 24,
         fontWeight: FontWeight.w300,
       ),
     ),

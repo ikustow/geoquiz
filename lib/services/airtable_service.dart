@@ -13,12 +13,16 @@ class AirtableService {
 
     if (records.isNotEmpty) {
       for (var element in records) {
+
+        final  currentQusetion =  await getOrCreateUserProgress(element.fields[1].value.toString());
+
         var category = Category(
           id: element.id.toString(),
           numberOfTasks: element.fields[0].value as int,
           level: element.fields[3].value.toString(),
           description: element.fields[2].value.toString(),
           name: element.fields[1].value.toString(),
+          progressValue: currentQusetion as int,
         );
 
         categories.add(category);
@@ -49,6 +53,7 @@ class AirtableService {
         }
       }
     }
+
 
     final question = questions.firstWhere((element) => element.number == 1);
     questions.clear();
@@ -142,4 +147,21 @@ class AirtableService {
   }
 
 
+}
+
+ getOrCreateUserProgress(catName) async {
+
+  var airtable = Airtable(apiKey: apiKey, projectBase: projectBase);
+  var records = await airtable.getAllRecords(recordNameCurrentProgress);
+  if (records.isNotEmpty) {
+    for (var element in records) {
+
+      print(element.fields);
+
+    }
+  }
+  else {
+    print("1");
+  }
+  return 1;
 }

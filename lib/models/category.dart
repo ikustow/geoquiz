@@ -5,6 +5,7 @@ class Category {
   int numberOfTasks;
   String level;
   String id;
+  int progressValue;
 
   Category({
     required this.name,
@@ -12,6 +13,7 @@ class Category {
     required this.numberOfTasks,
     required this.level,
     required this.id,
+    required this.progressValue,
   });
 
 }

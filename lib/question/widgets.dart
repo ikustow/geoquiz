@@ -19,3 +19,19 @@ class MainQuestionInfo extends StatelessWidget {
   }
 }
 
+
+
+class GoNextButton extends StatelessWidget {
+  final int questionNumber;
+  const GoNextButton({Key? key, required this.questionNumber}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        TextButton(onPressed:(){}, child: Text("Go next!"))
+      ],
+    );
+  }
+}
+
