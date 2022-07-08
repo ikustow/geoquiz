@@ -162,7 +162,6 @@ getOrCreateUserProgress(catName) async {
     }
     return 1;
   } else {
-
     final response = await Dio().post(
       'https://api.airtable.com/v0/$projectBase/$recordNameCurrentProgress',
       options: Options(
