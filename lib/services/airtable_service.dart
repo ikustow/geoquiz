@@ -1,4 +1,6 @@
 import 'package:dart_airtable/dart_airtable.dart';
+import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geoquiz/consts.dart';
 import 'package:geoquiz/models/category.dart';
 import 'package:geoquiz/models/question.dart';
@@ -14,7 +16,7 @@ class AirtableService {
     if (records.isNotEmpty) {
       for (var element in records) {
 
-        final  currentQusetion =  await getOrCreateUserProgress(element.fields[1].value.toString());
+        final  currentQusetion =  await getOrCreateUserProgress(element.fields[2].value.toString());
 
         var category = Category(
           id: element.id.toString(),
@@ -149,20 +151,40 @@ class AirtableService {
 
 }
 
- getOrCreateUserProgress(catName) async {
-
+getOrCreateUserProgress(catName) async {
+  print(catName);
+  final currenUser = FirebaseAuth.instance.currentUser!.email.toString();
   var airtable = Airtable(apiKey: apiKey, projectBase: projectBase);
   var records = await airtable.getAllRecords(recordNameCurrentProgress);
   if (records.isNotEmpty) {
     for (var element in records) {
-
       print(element.fields);
-
     }
-  }
-  else {
-    print("1");
+    return 1;
+  } else {
 
+    final response = await Dio().post(
+      'https://api.airtable.com/v0/$projectBase/$recordNameCurrentProgress',
+      options: Options(
+        contentType: 'Application/json',
+        headers: {
+          'Authorization': 'Bearer $apiKey',
+          'Accept': 'Application/json',
+        },
+      ),
+      data: {
+        'records': [
+          {
+            'fields': {
+              'User': '$currenUser',
+              'Question': 1,
+              'Category': '$catName',
+            }
+          },
+        ],
+      },
+    );
+
+    return 1;
   }
-  return 1;
 }
