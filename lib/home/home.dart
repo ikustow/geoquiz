@@ -61,7 +61,7 @@ class CategoryList extends StatelessWidget {
                 ElevatedButton(onPressed: (){
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>  QuestionPage(category: categories[index].level, id: categories[index].id,)),
+                    MaterialPageRoute(builder: (context) =>  QuestionPage(category: categories[index].description, id: categories[index].id, questionNumber: categories[index].progressValue ,)),
                   );
                 }, child: Text("Start"))
               ],

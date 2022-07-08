@@ -8,7 +8,8 @@ import '../theme.dart';
 class RightAnswerPage extends StatelessWidget {
   final Question questionInfo;
   final List <Answer> answers;
-  const RightAnswerPage({Key? key, required this.questionInfo, required this.answers}) : super(key: key);
+  final int currentQuestionNumber;
+  const RightAnswerPage({Key? key, required this.questionInfo, required this.answers, required this.currentQuestionNumber}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class RightAnswerPage extends StatelessWidget {
         children: [
           MainQuestionInfo(questionInfo: questionInfo,),
           RightListOfAnswers(answers: answers,),
-          GoNextButton(questionNumber: 1)
+          GoNextButton(questionNumber: currentQuestionNumber, questionInfo: questionInfo.categoryName,)
         ],
       ),
     );

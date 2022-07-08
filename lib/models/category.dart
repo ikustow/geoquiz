@@ -7,6 +7,7 @@ class Category {
   String id;
   int progressValue;
 
+
   Category({
     required this.name,
     required this.description,

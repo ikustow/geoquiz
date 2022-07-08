@@ -30,3 +30,11 @@ class QuestionLoadedState extends QuestionState {
   @override
   List<Object> get props => [question,answers];
 }
+
+class NextQuestionState extends QuestionState {
+  final questionNumber;
+
+  NextQuestionState(this.questionNumber);
+  @override
+  List<Object> get props => [this.questionNumber];
+}

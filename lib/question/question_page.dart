@@ -13,8 +13,10 @@ import '../services/airtable_service.dart';
 class QuestionPage extends StatelessWidget {
   final String id;
   final String category;
+  final int questionNumber;
 
-  QuestionPage({Key? key, required this.id, required this.category})
+
+  QuestionPage({Key? key, required this.id, required this.category, required this.questionNumber})
       : super(key: key);
 
   @override
@@ -22,7 +24,7 @@ class QuestionPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => QuestionBloc(
         RepositoryProvider.of<AirtableService>(context),
-      )..add(LoadQuestionApiEvent(id,category)),
+      )..add(LoadQuestionApiEvent(id,category,questionNumber)),
       child: Scaffold(
         appBar: AppBar(title: Text('test'),),
         body: BlocBuilder<QuestionBloc,QuestionState>(
@@ -38,7 +40,7 @@ class QuestionPage extends StatelessWidget {
               return Column(
                 children: [
                   MainQuestionInfo(questionInfo: state.question,),
-                  ListOfAnswers(answers: state.answers, questionInfo: state.question,),
+                  ListOfAnswers(answers: state.answers, questionInfo: state.question,currentQuestionNumber: questionNumber),
                 ],
               );
             }
@@ -53,9 +55,10 @@ class QuestionPage extends StatelessWidget {
 
 
 class ListOfAnswers extends StatelessWidget {
+  final int currentQuestionNumber;
   final Question questionInfo;
   final List <Answer> answers;
-  const ListOfAnswers({Key? key, required this.answers, required this.questionInfo}) : super(key: key);
+  const ListOfAnswers({Key? key, required this.answers, required this.questionInfo, required this.currentQuestionNumber}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +77,7 @@ class ListOfAnswers extends StatelessWidget {
                   Navigator.pushReplacement(
                     context,
                     PageRouteBuilder(
-                      pageBuilder: (context, animation1, animation2) =>RightAnswerPage(questionInfo: questionInfo, answers: answers,),
+                      pageBuilder: (context, animation1, animation2) =>RightAnswerPage(questionInfo: questionInfo, answers: answers, currentQuestionNumber:currentQuestionNumber ,),
                       transitionDuration: Duration.zero,
                       reverseTransitionDuration: Duration.zero,
                     ),

@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:dart_airtable/dart_airtable.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:geoquiz/consts.dart';
 import 'package:geoquiz/models/category.dart';
+import 'package:geoquiz/models/current_progress.dart';
 import 'package:geoquiz/models/question.dart';
 
 import '../models/answer.dart';
@@ -27,6 +31,7 @@ class AirtableService {
           progressValue: currentQusetion as int,
         );
 
+
         categories.add(category);
       }
     }
@@ -34,45 +39,43 @@ class AirtableService {
     return categories;
   }
 
-  Future<Question> getAirtableQuestionByCategory(number, catId) async {
+  Future<Question> getAirtableQuestionByCategory(name, catId, questionNumber) async {
     var airtable = Airtable(apiKey: apiKey, projectBase: projectBase);
     var records = await airtable.getAllRecords(recordNameQuestions);
     final questions = <Question>[];
 
+
     if (records.isNotEmpty) {
       for (var element in records) {
         final  details = getQuestionValues(element);
-        if (details['category'] == catId) {
+        if (details['category'] == name) {
 
           var question = Question(
-            // ADD NUMBERING
-
             number: details['question'],
             categoryID: details['category'],
             pictureUrl: details['pictureUrl'],
+            categoryName: name,
           );
           questions.add(question);
         }
       }
     }
 
-
-    final question = questions.firstWhere((element) => element.number == 1);
+    final question = questions.firstWhere((element) => element.number == questionNumber);
     questions.clear();
-
 
     return question;
   }
 
 
 
-  Future<List<Answer>> getAirtableAnswersByQuestion(question) async {
-    final answers = await getAnswers(question);
+  Future<List<Answer>> getAirtableAnswersByQuestion(question, questionNumber) async {
+    final answers = await getAnswers(question, questionNumber);
     return answers;
   }
 
 
-  getAnswers(question) async {
+  getAnswers(question, questionNumber) async {
     var airtable = Airtable(apiKey: apiKey, projectBase: projectBase);
     var records = await airtable.getAllRecords(recordNameAnswers);
     final answers = <Answer>[];
@@ -81,7 +84,6 @@ class AirtableService {
 
         final Map details = getAnswerValues(element);
 
-
         var answer = Answer(
           description: details['desc'],
           category: details['category'],
@@ -89,14 +91,17 @@ class AirtableService {
           right: details['right'],
         );
 
+        if (answer.question == questionNumber ){
         answers.add(answer);
+        }
+
       }
     }
     return answers;
   }
 
 
-  getAnswerValues(AirtableRecord airtableElement) {
+  getAnswerValues(AirtableRecord airtableElement,) {
     var details = new Map();
 
     final question = airtableElement.getField("Questions");
@@ -121,8 +126,8 @@ class AirtableService {
     }else{
       details['right'] = false;
     }
+return details;
 
-    return details;
   }
 
   getQuestionValues(AirtableRecord airtableElement) {
@@ -136,8 +141,7 @@ class AirtableService {
 
     final category = airtableElement.getField("Category");
     if (category?.value != null) {
-      details['category'] =
-          category!.value.toString().substring(1, category.value.toString().length - 1);
+      details['category'] =  category!.value.toString();
     }
 
     final pictureUrl = airtableElement.getField("Picture");
@@ -149,18 +153,90 @@ class AirtableService {
   }
 
 
+  Future<int> updateUserStatus (catName, currentNumber) async {
+    print(catName);
+    var currentQuestion = currentNumber + 1;
+    final currenUser = FirebaseAuth.instance.currentUser!.email.toString();
+
+    final response = await Dio().get(
+      'https://api.airtable.com/v0/$projectBase/$recordNameCurrentProgress',
+      queryParameters: {
+        'filterByFormula': 'SEARCH("$catName",{Category})'
+        // Searches the value 'Cactus' in the 'Short description' field.
+      },
+      options: Options(
+        headers: {
+          'Authorization': 'Bearer $apiKey',
+          'Accept': 'Application/json',
+        },
+      ),
+    );
+
+    final curProgress = CurrentProgress.fromJson(response.data);
+    final filteredRecords = curProgress.records.firstWhere((element) => element.fields.category == catName && element.fields.user == currenUser);
+    final id = filteredRecords.id;
+    final fieldCategory = catName;
+    final fieldProgressNumber  = currentQuestion;
+
+    final response1 = await Dio().patch(
+      'https://api.airtable.com/v0/$projectBase/$recordNameCurrentProgress',
+      options: Options(
+        contentType: 'Application/json',
+        headers: {
+          'Authorization': 'Bearer $apiKey',
+          'Accept': 'Application/json',
+        },
+      ),
+      data: {
+        'records': [
+          {
+            'id': '$id',
+            'fields': {
+              'Category': '$fieldCategory',
+              'Question': fieldProgressNumber,
+            }
+          },
+        ],
+      },
+    );
+
+    return currentQuestion;
+
+  }
+
+
+
+
 }
 
 getOrCreateUserProgress(catName) async {
   print(catName);
+  var currentQuestion = 1;
   final currenUser = FirebaseAuth.instance.currentUser!.email.toString();
-  var airtable = Airtable(apiKey: apiKey, projectBase: projectBase);
-  var records = await airtable.getAllRecords(recordNameCurrentProgress);
-  if (records.isNotEmpty) {
-    for (var element in records) {
-      print(element.fields);
-    }
-    return 1;
+
+  final response = await Dio().get(
+    'https://api.airtable.com/v0/$projectBase/$recordNameCurrentProgress',
+    queryParameters: {
+      'filterByFormula': 'SEARCH("$catName",{Category})'
+      // Searches the value 'Cactus' in the 'Short description' field.
+    },
+    options: Options(
+      headers: {
+        'Authorization': 'Bearer $apiKey',
+        'Accept': 'Application/json',
+      },
+    ),
+  );
+
+  final curProgress = CurrentProgress.fromJson(response.data);
+
+  if (curProgress.records.isNotEmpty) {
+    curProgress.records.forEach((value) {
+
+      if (value.fields.user == currenUser) {
+        currentQuestion = value.fields.question;
+      }
+    });
   } else {
     final response = await Dio().post(
       'https://api.airtable.com/v0/$projectBase/$recordNameCurrentProgress',
@@ -183,7 +259,8 @@ getOrCreateUserProgress(catName) async {
         ],
       },
     );
-
-    return 1;
   }
+  return currentQuestion;
 }
+
+
