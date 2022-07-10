@@ -38,3 +38,11 @@ class NextQuestionState extends QuestionState {
   @override
   List<Object> get props => [this.questionNumber];
 }
+
+class CompleteQuizState extends QuestionState {
+  final questionCategory;
+
+  CompleteQuizState(this.questionCategory);
+  @override
+  List<Object> get props => [this.questionCategory];
+}

@@ -19,7 +19,7 @@ class RightAnswerPage extends StatelessWidget {
         children: [
           MainQuestionInfo(questionInfo: questionInfo,),
           RightListOfAnswers(answers: answers,),
-          GoNextButton(questionNumber: currentQuestionNumber, questionInfo: questionInfo.categoryName,)
+          GoNextButton(questionNumber: currentQuestionNumber, questionInfo: questionInfo.categoryID,)
         ],
       ),
     );

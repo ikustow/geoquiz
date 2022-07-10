@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geoquiz/models/question.dart';
 import 'package:geoquiz/question/bloc/qion_bloc.dart';
+import 'package:geoquiz/question/complete_page.dart';
 import 'package:geoquiz/question/question_page.dart';
 
 import '../services/airtable_service.dart';
@@ -47,6 +48,16 @@ class GoNextButton extends StatelessWidget {
                     MaterialPageRoute(builder: (context) =>  QuestionPage(category: questionInfo, id: questionInfo, questionNumber:state.questionNumber,)),
                   );
                 }, child: Text("Go next"),
+                );
+              }
+
+              if (state is CompleteQuizState) {
+                return TextButton(onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>  CompletePage(category: questionInfo,)),
+                  );
+                }, child: Text("Awesome!"),
                 );
               }
 

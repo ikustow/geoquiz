@@ -57,11 +57,11 @@ class CategoryList extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return Card(child: Column(
               children: [
-                Text(categories[index].level, style: TextStyle(fontSize: 22)),
+                Text(categories[index].description, style: TextStyle(fontSize: 22)),
                 ElevatedButton(onPressed: (){
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>  QuestionPage(category: categories[index].description, id: categories[index].id, questionNumber: categories[index].progressValue ,)),
+                    MaterialPageRoute(builder: (context) =>  QuestionPage(category: categories[index].description, id: categories[index].name, questionNumber: categories[index].progressValue ,)),
                   );
                 }, child: Text("Start"))
               ],

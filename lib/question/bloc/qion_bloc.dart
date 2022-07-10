@@ -18,8 +18,8 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
 
     on<LoadQuestionApiEvent>((event, emit)  async  {
 
-        final questionInfo = await _airtableService.getAirtableQuestionByCategory(event.category, event.id, event.questionNumber);
-        final answers = await _airtableService.getAirtableAnswersByQuestion(questionInfo, event.questionNumber);
+      final questionInfo = await _airtableService.getAirtableQuestionByCategory(event.id, event.id, event.questionNumber);
+      final answers = await _airtableService.getAirtableAnswersByQuestion(questionInfo, event.questionNumber);
         emit(QuestionLoadedState(questionInfo,answers));
     });
 
@@ -29,8 +29,19 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
     });
 
     on<NextQuestionEvent>((event, emit)  async  {
-      final questionNumber = await _airtableService.updateUserStatus(event.questionInfo, event.questionNumber);
-      emit(NextQuestionState(questionNumber));
+
+      final categoryData = await _airtableService.getAirtableCategoriesDio(event.questionInfo);
+
+      if (categoryData == event.questionNumber){
+        emit(CompleteQuizState(event.questionInfo));
+      }
+      else {
+
+        print(event.questionInfo);
+        final questionNumber = await _airtableService.updateUserStatus(event.questionInfo, event.questionNumber);
+        emit(NextQuestionState(questionNumber));
+      }
+
     });
 
 

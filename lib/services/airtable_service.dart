@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geoquiz/consts.dart';
 import 'package:geoquiz/models/category.dart';
+import 'package:geoquiz/models/category_dio.dart';
 import 'package:geoquiz/models/current_progress.dart';
 import 'package:geoquiz/models/question.dart';
 
@@ -20,7 +21,7 @@ class AirtableService {
     if (records.isNotEmpty) {
       for (var element in records) {
 
-        final  currentQusetion =  await getOrCreateUserProgress(element.fields[2].value.toString());
+        final  currentQusetion =  await getOrCreateUserProgress(element.fields[1].value.toString());
 
         var category = Category(
           id: element.id.toString(),
@@ -30,6 +31,7 @@ class AirtableService {
           name: element.fields[1].value.toString(),
           progressValue: currentQusetion as int,
         );
+
 
 
         categories.add(category);
@@ -154,7 +156,7 @@ return details;
 
 
   Future<int> updateUserStatus (catName, currentNumber) async {
-    print(catName);
+
     var currentQuestion = currentNumber + 1;
     final currenUser = FirebaseAuth.instance.currentUser!.email.toString();
 
@@ -206,11 +208,32 @@ return details;
 
 
 
+  Future<int> getAirtableCategoriesDio(catName) async {
+
+    final response = await Dio().get(
+      'https://api.airtable.com/v0/$projectBase/$recordNameCategories',
+      queryParameters: {
+        'filterByFormula': 'SEARCH("$catName",{Name})'
+        // Searches the value 'Cactus' in the 'Short description' field.
+      },
+      options: Options(
+        headers: {
+          'Authorization': 'Bearer $apiKey',
+          'Accept': 'Application/json',
+        },
+      ),
+    );
+
+
+    final categoryInfo = CategoryDio.fromJson(response.data);
+    return categoryInfo.records.first.fields.numberOfTasks;
+  }
+
 
 }
 
 getOrCreateUserProgress(catName) async {
-  print(catName);
+
   var currentQuestion = 1;
   final currenUser = FirebaseAuth.instance.currentUser!.email.toString();
 
