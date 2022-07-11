@@ -5,6 +5,7 @@ import 'package:geoquiz/models/category.dart';
 import 'package:geoquiz/question/question_page.dart';
 import 'package:geoquiz/question/widgets.dart';
 import 'package:geoquiz/services/airtable_service.dart';
+import 'package:geoquiz/theme.dart';
 
 import '../services/connectivity_service.dart';
 
@@ -33,7 +34,10 @@ class HomePage extends StatelessWidget {
               return CategoryList(categories: state.categories,);
             }
             if (state is HomeNoInternetState) {
-              return Text('no internet :(');
+             // return Text('no internet :(');
+              return Center(
+                child: CircularProgressIndicator(),
+              );
             }
             return Container();
           },
@@ -50,22 +54,44 @@ class CategoryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-      ListView.builder(
-          padding: const EdgeInsets.all(8),
-          itemCount: categories.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Card(child: Column(
+    return ListView.builder(
+        padding: const EdgeInsets.all(8),
+        itemCount: categories.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
+            shape: RoundedRectangleBorder(
+              side: BorderSide(
+                width: 4,
+                color: Colors.black,
+              ),
+            ),
+            child: Column(
               children: [
-                Text(categories[index].description, style: TextStyle(fontSize: 22)),
-                ElevatedButton(onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  QuestionPage(category: categories[index].description, id: categories[index].name, questionNumber: categories[index].progressValue ,)),
-                  );
-                }, child: Text("Start"))
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(categories[index].description,
+                      style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+                  child: ElevatedButton(
+                    style: AppButtonStyle.startQuizButton,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => QuestionPage(
+                                    category: categories[index].description,
+                                    id: categories[index].name,
+                                    questionNumber:
+                                        categories[index].progressValue,
+                                  )),
+                        );
+                      },
+                      child: Text("Start")),
+                )
               ],
-            ));
+            ),);
           }
       );
   }

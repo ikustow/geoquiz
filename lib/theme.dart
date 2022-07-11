@@ -31,4 +31,17 @@ abstract class AppButtonStyle {
     padding: MaterialStateProperty.all(
         EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
   );
+
+  static final ButtonStyle startQuizButton = ButtonStyle(
+
+    foregroundColor: MaterialStateProperty.all(rightTextColor),
+    textStyle: MaterialStateProperty.all(
+      TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w300,
+      ),
+    ),
+    padding: MaterialStateProperty.all(
+        EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
+  );
 }
