@@ -36,8 +36,6 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
         emit(CompleteQuizState(event.questionInfo));
       }
       else {
-
-        print(event.questionInfo);
         final questionNumber = await _airtableService.updateUserStatus(event.questionInfo, event.questionNumber);
         emit(NextQuestionState(questionNumber));
       }
