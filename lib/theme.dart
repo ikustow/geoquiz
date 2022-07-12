@@ -4,6 +4,8 @@ abstract class AppButtonStyle {
   static const Color rightColor = Colors.green;
   static const Color rightTextColor = Colors.white;
   static const Color primaryColor = Colors.indigo;
+  static const Color categoryButtonColor = Colors.amber;
+  static const Color categoryTextButtonColor = Colors.black87;
 
   static final ButtonStyle RightButton = ButtonStyle(
 
@@ -33,8 +35,17 @@ abstract class AppButtonStyle {
   );
 
   static final ButtonStyle startQuizButton = ButtonStyle(
-
-    foregroundColor: MaterialStateProperty.all(rightTextColor),
+    shape:MaterialStateProperty.all<OutlinedBorder>(
+        RoundedRectangleBorder(
+          side: BorderSide(
+            width: 2,
+            color: Colors.black,
+          ),
+          borderRadius: BorderRadius.zero,
+        )),
+    shadowColor: MaterialStateProperty.all(categoryTextButtonColor),
+    backgroundColor: MaterialStateProperty.all(categoryButtonColor),
+    foregroundColor: MaterialStateProperty.all(categoryTextButtonColor),
     textStyle: MaterialStateProperty.all(
       TextStyle(
         fontSize: 26,
