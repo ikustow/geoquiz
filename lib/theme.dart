@@ -37,8 +37,8 @@ abstract class AppButtonStyle {
     foregroundColor: MaterialStateProperty.all(rightTextColor),
     textStyle: MaterialStateProperty.all(
       TextStyle(
-        fontSize: 24,
-        fontWeight: FontWeight.w300,
+        fontSize: 26,
+        fontWeight: FontWeight.bold,
       ),
     ),
     padding: MaterialStateProperty.all(
