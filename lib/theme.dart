@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class AppButtonStyle {
+
   static const Color rightColor = Colors.green;
   static const Color rightTextColor = Colors.white;
   static const Color primaryColor = Colors.indigo;
@@ -55,4 +56,24 @@ abstract class AppButtonStyle {
     padding: MaterialStateProperty.all(
         EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
   );
+}
+
+
+abstract class TextStyles {
+
+  static const Color welcomeTextolor = Colors.black87;
+
+  static final TextStyle welcomeTextStyle =  TextStyle(
+    fontSize: 22,
+    color: welcomeTextolor,
+    fontWeight: FontWeight.normal,
+  );
+
+  static final TextStyle userNameTextStyle =  TextStyle(
+    fontSize: 22,
+    color: welcomeTextolor,
+    fontWeight: FontWeight.bold,
+  );
+
+
 }

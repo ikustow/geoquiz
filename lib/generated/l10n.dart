@@ -80,6 +80,86 @@ class S {
     );
   }
 
+  /// `Best`
+  String get welcome_animate_title_1 {
+    return Intl.message(
+      'Best',
+      name: 'welcome_animate_title_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quiz`
+  String get welcome_animate_title_2 {
+    return Intl.message(
+      'Quiz',
+      name: 'welcome_animate_title_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In the`
+  String get welcome_animate_title_3 {
+    return Intl.message(
+      'In the',
+      name: 'welcome_animate_title_3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `WORLD!`
+  String get welcome_animate_title_4 {
+    return Intl.message(
+      'WORLD!',
+      name: 'welcome_animate_title_4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome, `
+  String get welcome_text_title {
+    return Intl.message(
+      'Welcome, ',
+      name: 'welcome_text_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get home_bar_title {
+    return Intl.message(
+      'Home',
+      name: 'home_bar_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Progress`
+  String get progress_bar_title {
+    return Intl.message(
+      'Progress',
+      name: 'progress_bar_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About`
+  String get about_bar_title {
+    return Intl.message(
+      'About',
+      name: 'about_bar_title',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Geo quiz`
   String get home_appbar_title {
     return Intl.message(

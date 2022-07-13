@@ -2,5 +2,13 @@
   "start_button_title": "Start",
   "sign_in_app_bar_title": "Geo quiz",
   "sign_in_title": "Sign in",
+  "welcome_animate_title_1": "Best",
+  "welcome_animate_title_2": "Quiz",
+  "welcome_animate_title_3": "In the",
+  "welcome_animate_title_4": "WORLD!",
+  "welcome_text_title": "Welcome, ",
+  "home_bar_title": "Home",
+  "progress_bar_title": "Progress",
+  "about_bar_title": "About",
   "home_appbar_title": "Geo quiz"
 }

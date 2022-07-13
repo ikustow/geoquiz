@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geoquiz/authentication/bloc/auth_bloc.dart';
 import 'package:geoquiz/authentication/sign_in.dart';
 
+import '../home/widgets/bottom_navigation_bar.dart';
+
 class DetailsPageWidget extends StatelessWidget {
   const DetailsPageWidget({Key? key}) : super(key: key);
 
@@ -15,6 +17,7 @@ class DetailsPageWidget extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Details'),
       ),
+      bottomNavigationBar:  BottomNavigationBarWidget(index: 2,),
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is UnAuthenticated) {
@@ -44,6 +47,7 @@ class DetailsPageWidget extends StatelessWidget {
                   context.read<AuthBloc>().add(SignOutRequested());
                 },
               ),
+
             ],
           ),
         ),
