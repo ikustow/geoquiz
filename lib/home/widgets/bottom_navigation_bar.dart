@@ -30,7 +30,6 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const HomePage()));
       }
-
     });
   }
 
