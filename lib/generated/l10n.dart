@@ -50,6 +50,16 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Start`
+  String get start_button_title {
+    return Intl.message(
+      'Start',
+      name: 'start_button_title',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Geo quiz`
   String get sign_in_app_bar_title {
     return Intl.message(
@@ -65,6 +75,16 @@ class S {
     return Intl.message(
       'Sign in',
       name: 'sign_in_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Geo quiz`
+  String get home_appbar_title {
+    return Intl.message(
+      'Geo quiz',
+      name: 'home_appbar_title',
       desc: '',
       args: [],
     );

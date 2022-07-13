@@ -1,4 +1,6 @@
 {
+  "start_button_title": "Start",
   "sign_in_app_bar_title": "Geo quiz",
-  "sign_in_title": "Sign in"
+  "sign_in_title": "Sign in",
+  "home_appbar_title": "Geo quiz"
 }

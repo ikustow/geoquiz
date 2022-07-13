@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geoquiz/generated/l10n.dart';
 import 'package:geoquiz/home/bloc/home_bloc.dart';
-import 'package:geoquiz/models/category.dart';
-import 'package:geoquiz/question/question_page.dart';
-import 'package:geoquiz/question/widgets.dart';
+import 'package:geoquiz/home/widgets/category_list_widget.dart';
+import 'package:geoquiz/home/widgets/fire_rotation_widget.dart';
 import 'package:geoquiz/services/airtable_service.dart';
-import 'package:geoquiz/theme.dart';
-
 import '../services/connectivity_service.dart';
 
 class HomePage extends StatelessWidget {
@@ -21,7 +19,7 @@ class HomePage extends StatelessWidget {
       )..add(LoadApiEvent()),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Best quiz in the world'),
+          title: Text(S.of(context).home_appbar_title,),
         ),
         body: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
@@ -31,7 +29,12 @@ class HomePage extends StatelessWidget {
               );
             }
             if (state is HomeLoadedState) {
-              return CategoryList(categories: state.categories,);
+              return Column(
+                children: [
+                  CategoryList(categories: state.categories,),
+                  FireRotationWidget(),
+                ],
+              );
             }
             if (state is HomeNoInternetState) {
              // return Text('no internet :(');
@@ -44,56 +47,6 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class CategoryList extends StatelessWidget {
-  final List<Category> categories;
-
-  const CategoryList({Key? key, required this.categories}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        padding: const EdgeInsets.all(8),
-        itemCount: categories.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            shape: RoundedRectangleBorder(
-              side: BorderSide(
-                width: 4,
-                color: Colors.black,
-              ),
-            ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(categories[index].description,
-                      style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
-                  child: ElevatedButton(
-                    style: AppButtonStyle.startQuizButton,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => QuestionPage(
-                                    category: categories[index].description,
-                                    id: categories[index].name,
-                                    questionNumber:
-                                        categories[index].progressValue,
-                                  )),
-                        );
-                      },
-                      child: Text("Start")),
-                )
-              ],
-            ),);
-          }
-      );
   }
 }
 
