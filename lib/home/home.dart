@@ -28,6 +28,7 @@ class HomePage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             }
+
             if (state is HomeLoadedState) {
               return Column(
                 children: [
