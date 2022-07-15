@@ -5,7 +5,8 @@ import 'package:geoquiz/progress/bloc/progress_bloc.dart';
 import 'package:geoquiz/progress/widgets/progress_list_widget.dart';
 
 import '../generated/l10n.dart';
-import '../home/widgets/bottom_navigation_bar.dart';
+import '../main_widgets/bottom_navigation_bar.dart';
+import '../main_widgets/error_widget.dart';
 import '../services/airtable_service.dart';
 
 class ProgressPage extends StatelessWidget {
@@ -36,7 +37,9 @@ class ProgressPage extends StatelessWidget {
               progressValues: state.progress,
             );
           }
-          return Text('TE');
+          return Container(
+            child: CustomErrorWidget(),
+          );
         }),
       ),
     );

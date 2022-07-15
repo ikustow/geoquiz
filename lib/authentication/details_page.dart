@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geoquiz/authentication/bloc/auth_bloc.dart';
 import 'package:geoquiz/authentication/sign_in.dart';
 
-import '../home/widgets/bottom_navigation_bar.dart';
+import '../main_widgets/bottom_navigation_bar.dart';
 
 class DetailsPageWidget extends StatelessWidget {
   const DetailsPageWidget({Key? key}) : super(key: key);

@@ -3,10 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geoquiz/generated/l10n.dart';
 import 'package:geoquiz/home/bloc/home_bloc.dart';
 import 'package:geoquiz/home/widgets/animated_welcome_text.dart';
-import 'package:geoquiz/home/widgets/bottom_navigation_bar.dart';
+import 'package:geoquiz/main_widgets/bottom_navigation_bar.dart';
 import 'package:geoquiz/home/widgets/category_list_widget.dart';
 import 'package:geoquiz/home/widgets/welcome_text_widget.dart';
 import 'package:geoquiz/services/airtable_service.dart';
+import '../main_widgets/error_widget.dart';
 import '../services/connectivity_service.dart';
 
 class HomePage extends StatelessWidget {
@@ -50,7 +51,9 @@ class HomePage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             }
-            return Container();
+            return Container(
+              child: CustomErrorWidget(),
+            );
           },
         ),
       ),

@@ -1,7 +1,13 @@
 {
   "start_button_title": "Start",
   "sign_in_app_bar_title": "Geo quiz",
+  "right_app_bar_title": "Right!",
+  "wrong_app_bar_title": "Wrong!",
+  "go_next_title": "Go next!",
+  "final_title": "Awesome!",
+  "restart_title": "Try again!",
   "sign_in_title": "Sign in",
+  "number_title": "Number # ",
   "welcome_animate_title_1": "Best",
   "welcome_animate_title_2": "Quiz",
   "welcome_animate_title_3": "In the",

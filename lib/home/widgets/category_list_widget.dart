@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../generated/l10n.dart';
 import '../../models/category.dart';
-import '../../question/question_page.dart';
+import '../../question/pages/question_page.dart';
 import '../../theme.dart';
 
 class CategoryList extends StatelessWidget {

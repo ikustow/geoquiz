@@ -31,11 +31,11 @@ class FireRotationWidgetState extends State<FireRotationWidget> with TickerProvi
 
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
+      height: 60,
       child: RotationTransition(
           turns: _animation,
           alignment: Alignment(0.1, 0.1),
-          child: Icon(Icons.whatshot, color: Colors.deepOrange, size: 80,)
+          child: Icon(Icons.whatshot, color: Colors.deepOrange, size: 60,)
       ),
     );
   }

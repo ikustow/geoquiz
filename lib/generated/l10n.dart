@@ -70,11 +70,71 @@ class S {
     );
   }
 
+  /// `Right!`
+  String get right_app_bar_title {
+    return Intl.message(
+      'Right!',
+      name: 'right_app_bar_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wrong!`
+  String get wrong_app_bar_title {
+    return Intl.message(
+      'Wrong!',
+      name: 'wrong_app_bar_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go next!`
+  String get go_next_title {
+    return Intl.message(
+      'Go next!',
+      name: 'go_next_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Awesome!`
+  String get final_title {
+    return Intl.message(
+      'Awesome!',
+      name: 'final_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try again!`
+  String get restart_title {
+    return Intl.message(
+      'Try again!',
+      name: 'restart_title',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sign in`
   String get sign_in_title {
     return Intl.message(
       'Sign in',
       name: 'sign_in_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number # `
+  String get number_title {
+    return Intl.message(
+      'Number # ',
+      name: 'number_title',
       desc: '',
       args: [],
     );

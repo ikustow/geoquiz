@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:geoquiz/home/home.dart';
 import 'package:geoquiz/progress/progress_page.dart';
 
-import '../../authentication/details_page.dart';
-import '../../generated/l10n.dart';
+import '../authentication/details_page.dart';
+import '../generated/l10n.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
 

@@ -24,12 +24,17 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about_bar_title": MessageLookupByLibrary.simpleMessage("About"),
         "done_task_title": MessageLookupByLibrary.simpleMessage("Done!"),
+        "final_title": MessageLookupByLibrary.simpleMessage("Awesome!"),
+        "go_next_title": MessageLookupByLibrary.simpleMessage("Go next!"),
         "home_appbar_title": MessageLookupByLibrary.simpleMessage("Geo quiz"),
         "home_bar_title": MessageLookupByLibrary.simpleMessage("Home"),
         "not_done_task_title": MessageLookupByLibrary.simpleMessage(":("),
+        "number_title": MessageLookupByLibrary.simpleMessage("Number # "),
         "progress_appbar_title":
             MessageLookupByLibrary.simpleMessage("Progress"),
         "progress_bar_title": MessageLookupByLibrary.simpleMessage("Progress"),
+        "restart_title": MessageLookupByLibrary.simpleMessage("Try again!"),
+        "right_app_bar_title": MessageLookupByLibrary.simpleMessage("Right!"),
         "sign_in_app_bar_title":
             MessageLookupByLibrary.simpleMessage("Geo quiz"),
         "sign_in_title": MessageLookupByLibrary.simpleMessage("Sign in"),
@@ -40,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("In the"),
         "welcome_animate_title_4":
             MessageLookupByLibrary.simpleMessage("WORLD!"),
-        "welcome_text_title": MessageLookupByLibrary.simpleMessage("Welcome, ")
+        "welcome_text_title": MessageLookupByLibrary.simpleMessage("Welcome, "),
+        "wrong_app_bar_title": MessageLookupByLibrary.simpleMessage("Wrong!")
       };
 }
