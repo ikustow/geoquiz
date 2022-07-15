@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geoquiz/home/home.dart';
+import 'package:geoquiz/progress/progress_page.dart';
 
 import '../../authentication/details_page.dart';
 import '../../generated/l10n.dart';
@@ -30,13 +31,16 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const HomePage()));
       }
+
+      if (selectedIndex == 1) {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const ProgressPage()));
+      }
     });
   }
 
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-
-
 
       currentIndex: selectedIndex,
       selectedFontSize: 18,

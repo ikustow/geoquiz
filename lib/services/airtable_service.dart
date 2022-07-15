@@ -77,6 +77,25 @@ class AirtableService {
   }
 
 
+  Future <CurrentProgress> getAirtableProgressByUser() async {
+    final currenUser = FirebaseAuth.instance.currentUser!.email.toString();
+
+    final response = await Dio().get(
+      'https://api.airtable.com/v0/$projectBase/$recordNameCurrentProgress',
+
+      options: Options(
+        headers: {
+          'Authorization': 'Bearer $apiKey',
+          'Accept': 'Application/json',
+        },
+      ),
+    );
+
+    final curProgress = CurrentProgress.fromJson(response.data);
+    return curProgress;
+  }
+
+
   getAnswers(question, questionNumber) async {
     var airtable = Airtable(apiKey: apiKey, projectBase: projectBase);
     var records = await airtable.getAllRecords(recordNameAnswers);

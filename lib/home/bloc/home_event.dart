@@ -4,8 +4,6 @@ abstract class HomeEvent extends Equatable {
   const HomeEvent();
 }
 
-
-
 class LoadApiEvent extends HomeEvent {
   @override
   // TODO: implement props
