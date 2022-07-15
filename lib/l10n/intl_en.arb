@@ -10,5 +10,8 @@
   "home_bar_title": "Home",
   "progress_bar_title": "Progress",
   "about_bar_title": "About",
+  "progress_appbar_title": "Progress",
+  "done_task_title": "Done!",
+  "not_done_task_title": ":(",
   "home_appbar_title": "Geo quiz"
 }

@@ -8,6 +8,7 @@ import 'package:geoquiz/consts.dart';
 import 'package:geoquiz/models/category.dart';
 import 'package:geoquiz/models/category_dio.dart';
 import 'package:geoquiz/models/current_progress.dart';
+import 'package:geoquiz/models/progress_value_details.dart';
 import 'package:geoquiz/models/question.dart';
 
 import '../models/answer.dart';
@@ -20,8 +21,8 @@ class AirtableService {
 
     if (records.isNotEmpty) {
       for (var element in records) {
-
-        final  currentQusetion =  await getOrCreateUserProgress(element.fields[1].value.toString());
+        final currentQusetion =
+            await getOrCreateUserProgress(element.fields[1].value.toString());
 
         var category = Category(
           id: element.id.toString(),
@@ -32,8 +33,6 @@ class AirtableService {
           progressValue: currentQusetion as int,
         );
 
-
-
         categories.add(category);
       }
     }
@@ -41,17 +40,16 @@ class AirtableService {
     return categories;
   }
 
-  Future<Question> getAirtableQuestionByCategory(name, catId, questionNumber) async {
+  Future<Question> getAirtableQuestionByCategory(
+      name, catId, questionNumber) async {
     var airtable = Airtable(apiKey: apiKey, projectBase: projectBase);
     var records = await airtable.getAllRecords(recordNameQuestions);
     final questions = <Question>[];
 
-
     if (records.isNotEmpty) {
       for (var element in records) {
-        final  details = getQuestionValues(element);
+        final details = getQuestionValues(element);
         if (details['category'] == name) {
-
           var question = Question(
             number: details['question'],
             categoryID: details['category'],
@@ -63,26 +61,28 @@ class AirtableService {
       }
     }
 
-    final question = questions.firstWhere((element) => element.number == questionNumber);
+    final question =
+        questions.firstWhere((element) => element.number == questionNumber);
     questions.clear();
 
     return question;
   }
 
-
-
-  Future<List<Answer>> getAirtableAnswersByQuestion(question, questionNumber) async {
+  Future<List<Answer>> getAirtableAnswersByQuestion(
+      question, questionNumber) async {
     final answers = await getAnswers(question, questionNumber);
     return answers;
   }
 
-
-  Future <CurrentProgress> getAirtableProgressByUser() async {
+  Future<List<ProgressValueDetails>> getAirtableProgressByUser() async {
     final currenUser = FirebaseAuth.instance.currentUser!.email.toString();
 
     final response = await Dio().get(
       'https://api.airtable.com/v0/$projectBase/$recordNameCurrentProgress',
-
+      queryParameters: {
+        'filterByFormula': 'SEARCH("$currenUser",{User})'
+        // Searches the value 'Cactus' in the 'Short description' field.
+      },
       options: Options(
         headers: {
           'Authorization': 'Bearer $apiKey',
@@ -92,9 +92,39 @@ class AirtableService {
     );
 
     final curProgress = CurrentProgress.fromJson(response.data);
-    return curProgress;
-  }
 
+    final progressList = <ProgressValueDetails>[];
+
+    for (var record in curProgress.records) {
+      final category = record.fields.category;
+
+      final Inforesponse = await Dio().get(
+        'https://api.airtable.com/v0/$projectBase/$recordNameCategories',
+        queryParameters: {
+          'filterByFormula': 'SEARCH("$category",{Name})'
+          // Searches the value 'Cactus' in the 'Short description' field.
+        },
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $apiKey',
+            'Accept': 'Application/json',
+          },
+        ),
+      );
+
+      final details = CategoryDio.fromJson(Inforesponse.data);
+
+      final progressListValue = ProgressValueDetails(
+        numberOfTasks: details.records.first.fields.numberOfTasks,
+        currentQuestionNumber: record.fields.question,
+        level: details.records.first.fields.level,
+        categoryDescription: details.records.first.fields.description,
+      );
+      progressList.add(progressListValue);
+    }
+
+    return progressList;
+  }
 
   getAnswers(question, questionNumber) async {
     var airtable = Airtable(apiKey: apiKey, projectBase: projectBase);
@@ -102,7 +132,6 @@ class AirtableService {
     final answers = <Answer>[];
     if (records.isNotEmpty) {
       for (var element in records) {
-
         final Map details = getAnswerValues(element);
 
         var answer = Answer(
@@ -112,43 +141,43 @@ class AirtableService {
           right: details['right'],
         );
 
-        if (answer.question == questionNumber ){
-        answers.add(answer);
+        if (answer.question == questionNumber) {
+          answers.add(answer);
         }
-
       }
     }
     return answers;
   }
 
-
-  getAnswerValues(AirtableRecord airtableElement,) {
+  getAnswerValues(
+    AirtableRecord airtableElement,
+  ) {
     var details = new Map();
 
     final question = airtableElement.getField("Questions");
-    if (question?.value  != null) {
+    if (question?.value != null) {
       details['question'] = question!.value as int;
     }
 
     final category = airtableElement.getField("Categories");
     if (category?.value != null) {
-      details['category'] =
-          category!.value.toString().substring(1, category.value.toString().length - 1);
+      details['category'] = category!.value
+          .toString()
+          .substring(1, category.value.toString().length - 1);
     }
 
     final desc = airtableElement.getField("Description");
-    if (desc?.value  != null) {
-      details['desc'] = desc!.value .toString();
+    if (desc?.value != null) {
+      details['desc'] = desc!.value.toString();
     }
 
     final right = airtableElement.getField("Right");
-    if (right?.value  != null) {
+    if (right?.value != null) {
       details['right'] = true;
-    }else{
+    } else {
       details['right'] = false;
     }
-return details;
-
+    return details;
   }
 
   getQuestionValues(AirtableRecord airtableElement) {
@@ -156,13 +185,12 @@ return details;
 
     final question = airtableElement.getField("Question");
     if (question?.value != null) {
-
       details['question'] = question!.value as int;
     }
 
     final category = airtableElement.getField("Category");
     if (category?.value != null) {
-      details['category'] =  category!.value.toString();
+      details['category'] = category!.value.toString();
     }
 
     final pictureUrl = airtableElement.getField("Picture");
@@ -173,9 +201,7 @@ return details;
     return details;
   }
 
-
-  Future<int> updateUserStatus (catName, currentNumber) async {
-
+  Future<int> updateUserStatus(catName, currentNumber) async {
     var currentQuestion = currentNumber + 1;
     final currenUser = FirebaseAuth.instance.currentUser!.email.toString();
 
@@ -194,10 +220,12 @@ return details;
     );
 
     final curProgress = CurrentProgress.fromJson(response.data);
-    final filteredRecords = curProgress.records.firstWhere((element) => element.fields.category == catName && element.fields.user == currenUser);
+    final filteredRecords = curProgress.records.firstWhere((element) =>
+        element.fields.category == catName &&
+        element.fields.user == currenUser);
     final id = filteredRecords.id;
     final fieldCategory = catName;
-    final fieldProgressNumber  = currentQuestion;
+    final fieldProgressNumber = currentQuestion;
 
     final response1 = await Dio().patch(
       'https://api.airtable.com/v0/$projectBase/$recordNameCurrentProgress',
@@ -222,13 +250,9 @@ return details;
     );
 
     return currentQuestion;
-
   }
 
-
-
   Future<int> getAirtableCategoriesDio(catName) async {
-
     final response = await Dio().get(
       'https://api.airtable.com/v0/$projectBase/$recordNameCategories',
       queryParameters: {
@@ -243,16 +267,12 @@ return details;
       ),
     );
 
-
     final categoryInfo = CategoryDio.fromJson(response.data);
     return categoryInfo.records.first.fields.numberOfTasks;
   }
-
-
 }
 
 getOrCreateUserProgress(catName) async {
-
   var currentQuestion = 1;
   final currenUser = FirebaseAuth.instance.currentUser!.email.toString();
 
@@ -274,7 +294,6 @@ getOrCreateUserProgress(catName) async {
 
   if (curProgress.records.isNotEmpty) {
     curProgress.records.forEach((value) {
-
       if (value.fields.user == currenUser) {
         currentQuestion = value.fields.question;
       }
@@ -304,5 +323,3 @@ getOrCreateUserProgress(catName) async {
   }
   return currentQuestion;
 }
-
-

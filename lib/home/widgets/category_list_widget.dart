@@ -24,6 +24,7 @@ class CategoryList extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
+            elevation: 5,
             child: Column(
               children: [
                 Padding(

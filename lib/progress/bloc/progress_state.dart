@@ -16,7 +16,7 @@ class ProgressLoadingState extends ProgressState {
 }
 
 class ProgressLoadedState extends ProgressState {
-  final CurrentProgress progress;
+  final List<ProgressValueDetails> progress;
 
   ProgressLoadedState(this.progress);
   @override

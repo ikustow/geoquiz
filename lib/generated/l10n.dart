@@ -160,6 +160,36 @@ class S {
     );
   }
 
+  /// `Progress`
+  String get progress_appbar_title {
+    return Intl.message(
+      'Progress',
+      name: 'progress_appbar_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done!`
+  String get done_task_title {
+    return Intl.message(
+      'Done!',
+      name: 'done_task_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `:(`
+  String get not_done_task_title {
+    return Intl.message(
+      ':(',
+      name: 'not_done_task_title',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Geo quiz`
   String get home_appbar_title {
     return Intl.message(
