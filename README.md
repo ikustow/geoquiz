@@ -22,6 +22,10 @@ Features
 - Storing an authorization cache on a mobile device
 
 ### Main screen
+
+![main screen gif](https://user-images.githubusercontent.com/36426291/179363203-58e0cdeb-510f-4571-b7a1-e0381123c847.gif)
+
+
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
