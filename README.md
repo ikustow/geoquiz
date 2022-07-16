@@ -14,7 +14,8 @@
 
 ## App screens
 
-![](../../../../var/folders/bf/2_5y4zyn0998k4n9g5029gxr0000gp/T/TemporaryItems/NSIRD_screencaptureui_vYKipG/Screenshot 2022-07-16 at 18.47.18.png)
+![Screenshot 2022-07-16 at 18 49 59](https://user-images.githubusercontent.com/36426291/179362087-29a213d2-7e4b-4c91-a95d-5c11c5772ab8.png)
+
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
