@@ -16,7 +16,7 @@ class DetailsPageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // Getting the user from the FirebaseAuth Instance
     final github_title = S.of(context).github_title;
-    final github_account_title = S.of(context).about_app_bar_title;
+    final github_account_title = S.of(context).github_account_title;
     final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
       appBar: AppBar(
