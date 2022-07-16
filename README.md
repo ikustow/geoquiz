@@ -22,6 +22,7 @@ Features
 - Storing an authorization cache on a mobile device
 
 ### Main screen
+![main screen gif](https://user-images.githubusercontent.com/36426291/179363474-2f5fc40d-3767-468e-aeee-0624d1def735.gif)
 
 ![main screen gif](https://user-images.githubusercontent.com/36426291/179363203-58e0cdeb-510f-4571-b7a1-e0381123c847.gif)
 
