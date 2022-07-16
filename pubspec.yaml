@@ -34,7 +34,7 @@ dependencies:
   intl: ^0.17.0
   flutter_bloc: ^8.0.1
   firebase_core: ^1.17.0
-  firebase_auth: ^3.3.18
+  firebase_auth: ^3.4.2
   email_validator: ^2.0.1
   google_sign_in: ^5.2.1
   animated_text_kit: ^4.2.1
@@ -70,6 +70,10 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - airtable.png
+    - dio.png
+    - flutter_bloc.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

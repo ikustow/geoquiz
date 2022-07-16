@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:geoquiz/authentication/details_page.dart';
-import 'package:geoquiz/authentication/sign_up.dart';
-import 'package:geoquiz/generated/l10n.dart';
-import 'package:email_validator/email_validator.dart';
+import 'package:geoquiz/authentication/pages/sign_up.dart';
 import 'package:geoquiz/home/home.dart';
-
-import 'bloc/auth_bloc.dart';
+import 'package:geoquiz/theme.dart';
+import '../../generated/l10n.dart';
+import '../bloc/auth_bloc.dart';
+import '../widgets/welcome_sing_up_button.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -31,7 +30,9 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("SignIn"),
+        title: Text(
+          S.of(context).sign_in_app_bar_title,
+        ),
       ),
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
@@ -64,8 +65,8 @@ class _SignInState extends State<SignIn> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
-                          "Sign In",
+                        Text(
+                          S.of(context).sign_welcome_title,
                           style: TextStyle(
                             fontSize: 38,
                             fontWeight: FontWeight.bold,
@@ -82,8 +83,8 @@ class _SignInState extends State<SignIn> {
                                 TextFormField(
                                   keyboardType: TextInputType.emailAddress,
                                   controller: _emailController,
-                                  decoration: const InputDecoration(
-                                    hintText: "Email",
+                                  decoration: InputDecoration(
+                                    hintText: S.of(context).hint_email_text,
                                     border: OutlineInputBorder(),
                                   ),
                                 ),
@@ -93,23 +94,26 @@ class _SignInState extends State<SignIn> {
                                 TextFormField(
                                   keyboardType: TextInputType.text,
                                   controller: _passwordController,
-                                  decoration: const InputDecoration(
-                                    hintText: "Password",
+                                  decoration: InputDecoration(
+                                    hintText: S.of(context).hint_password_text,
                                     border: OutlineInputBorder(),
                                   ),
-                                 ),
+                                ),
                                 const SizedBox(
                                   height: 12,
                                 ),
                                 SizedBox(
                                   width:
-                                  MediaQuery.of(context).size.width * 0.7,
+                                      MediaQuery.of(context).size.width * 0.5,
                                   child: ElevatedButton(
+                                    style: AppButtonStyle.SignInButtonStyle,
                                     onPressed: () {
                                       _authenticateWithEmailAndPassword(
                                           context);
                                     },
-                                    child: const Text('Sign In'),
+                                    child: Text(
+                                      S.of(context).sign_in_button_title,
+                                    ),
                                   ),
                                 )
                               ],
@@ -126,17 +130,10 @@ class _SignInState extends State<SignIn> {
                             width: 30,
                           ),
                         ),
-                        const Text("Don't have an account?"),
-                        OutlinedButton(
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SignUp()),
-                            );
-                          },
-                          child: const Text("Sign Up"),
-                        )
+                        Text(
+                          S.of(context).account_check_title,
+                        ),
+                        WelcomeSignUpButton(),
                       ],
                     ),
                   ),
@@ -164,3 +161,4 @@ class _SignInState extends State<SignIn> {
     );
   }
 }
+

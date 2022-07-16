@@ -60,6 +60,116 @@ class S {
     );
   }
 
+  /// `About`
+  String get about_app_bar_title {
+    return Intl.message(
+      'About',
+      name: 'about_app_bar_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Congratulations!`
+  String get complete_app_bar_title {
+    return Intl.message(
+      'Congratulations!',
+      name: 'complete_app_bar_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Out`
+  String get sign_out_button_title {
+    return Intl.message(
+      'Sign Out',
+      name: 'sign_out_button_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign In`
+  String get sign_in_button_title {
+    return Intl.message(
+      'Sign In',
+      name: 'sign_in_button_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Up`
+  String get sign_up_button_title {
+    return Intl.message(
+      'Sign Up',
+      name: 'sign_up_button_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome`
+  String get sign_welcome_title {
+    return Intl.message(
+      'Welcome',
+      name: 'sign_welcome_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account?`
+  String get account_check_title {
+    return Intl.message(
+      'Don\'t have an account?',
+      name: 'account_check_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get hint_email_text {
+    return Intl.message(
+      'Email',
+      name: 'hint_email_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get hint_password_text {
+    return Intl.message(
+      'Password',
+      name: 'hint_password_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Powered by`
+  String get powered_by_text {
+    return Intl.message(
+      'Powered by',
+      name: 'powered_by_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Designed with Neobrutalism style`
+  String get designed_with {
+    return Intl.message(
+      'Designed with Neobrutalism style',
+      name: 'designed_with',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Geo quiz`
   String get sign_in_app_bar_title {
     return Intl.message(
@@ -135,6 +245,26 @@ class S {
     return Intl.message(
       'Number # ',
       name: 'number_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Github`
+  String get github_title {
+    return Intl.message(
+      'My Github',
+      name: 'github_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `@ikustow`
+  String get github_account_title {
+    return Intl.message(
+      '@ikustow',
+      name: 'github_account_title',
       desc: '',
       args: [],
     );
@@ -245,6 +375,36 @@ class S {
     return Intl.message(
       ':(',
       name: 'not_done_task_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Congratulations!`
+  String get congratulations_text {
+    return Intl.message(
+      'Congratulations!',
+      name: 'congratulations_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You finished`
+  String get finished_text {
+    return Intl.message(
+      'You finished',
+      name: 'finished_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `category`
+  String get category_text {
+    return Intl.message(
+      'category',
+      name: 'category_text',
       desc: '',
       args: [],
     );

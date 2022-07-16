@@ -43,7 +43,7 @@ class _AnimatedWelcomeTextState extends State<AnimatedWelcomeText> {
             fontFamily: "railway",
           ),
           child: AnimatedTextKit(
-              totalRepeatCount: 1,
+              totalRepeatCount: 2,
               repeatForever: false,
               isRepeatingAnimation: true,
               animatedTexts: [

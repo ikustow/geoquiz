@@ -16,7 +16,7 @@ abstract class AppButtonStyle {
   static final ButtonStyle RightButton = ButtonStyle(
 
     shape:MaterialStateProperty.all<OutlinedBorder>(
-        RoundedRectangleBorder(
+        const RoundedRectangleBorder(
           side: BorderSide(
             width: 2,
             color: Colors.black,
@@ -27,20 +27,20 @@ abstract class AppButtonStyle {
     backgroundColor: MaterialStateProperty.all(rightColor),
     foregroundColor: MaterialStateProperty.all(rightTextColor),
     textStyle: MaterialStateProperty.all(
-      TextStyle(
+      const TextStyle(
         fontSize: 26,
         fontWeight: FontWeight.bold,
       ),
     ),
     padding: MaterialStateProperty.all(
-        EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
+        const EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
   );
 
 
   static final ButtonStyle WrongButton = ButtonStyle(
 
     shape:MaterialStateProperty.all<OutlinedBorder>(
-        RoundedRectangleBorder(
+        const RoundedRectangleBorder(
           side: BorderSide(
             width: 2,
             color: Colors.black,
@@ -51,13 +51,13 @@ abstract class AppButtonStyle {
     backgroundColor: MaterialStateProperty.all(wrongColor),
     foregroundColor: MaterialStateProperty.all(wrongTextColor),
     textStyle: MaterialStateProperty.all(
-      TextStyle(
+      const TextStyle(
         fontSize: 26,
         fontWeight: FontWeight.bold,
       ),
     ),
     padding: MaterialStateProperty.all(
-        EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
+        const EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
   );
 
 
@@ -65,7 +65,7 @@ abstract class AppButtonStyle {
   static final ButtonStyle DefaultButton = ButtonStyle(
 
     shape:MaterialStateProperty.all<OutlinedBorder>(
-        RoundedRectangleBorder(
+        const RoundedRectangleBorder(
           side: BorderSide(
             width: 2,
             color: Colors.black,
@@ -76,18 +76,18 @@ abstract class AppButtonStyle {
     backgroundColor: MaterialStateProperty.all(defaultButtonColor),
     foregroundColor: MaterialStateProperty.all(categoryTextButtonColor),
     textStyle: MaterialStateProperty.all(
-      TextStyle(
+      const TextStyle(
         fontSize: 26,
         fontWeight: FontWeight.bold,
       ),
     ),
     padding: MaterialStateProperty.all(
-        EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
+        const EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
   );
 
   static final ButtonStyle startQuizButton = ButtonStyle(
     shape:MaterialStateProperty.all<OutlinedBorder>(
-        RoundedRectangleBorder(
+        const RoundedRectangleBorder(
           side: BorderSide(
             width: 2,
             color: Colors.black,
@@ -98,7 +98,7 @@ abstract class AppButtonStyle {
     backgroundColor: MaterialStateProperty.all(categoryButtonColor),
     foregroundColor: MaterialStateProperty.all(categoryTextButtonColor),
     textStyle: MaterialStateProperty.all(
-      TextStyle(
+      const TextStyle(
         fontSize: 26,
         fontWeight: FontWeight.bold,
       ),
@@ -110,7 +110,7 @@ abstract class AppButtonStyle {
   static final ButtonStyle GoNexttButton = ButtonStyle(
 
     shape:MaterialStateProperty.all<OutlinedBorder>(
-        RoundedRectangleBorder(
+        const RoundedRectangleBorder(
           side: BorderSide(
             width: 2,
             color: Colors.black,
@@ -121,14 +121,84 @@ abstract class AppButtonStyle {
     backgroundColor: MaterialStateProperty.all(primaryColor),
     foregroundColor: MaterialStateProperty.all(rightTextColor),
     textStyle: MaterialStateProperty.all(
-      TextStyle(
+      const TextStyle(
         fontSize: 26,
         fontWeight: FontWeight.bold,
       ),
     ),
     padding: MaterialStateProperty.all(
-        EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
+        const EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
   );
+
+  static final ButtonStyle SignInButtonStyle = ButtonStyle(
+
+    shape:MaterialStateProperty.all<OutlinedBorder>(
+        const RoundedRectangleBorder(
+          side: BorderSide(
+            width: 2,
+            color: Colors.black,
+          ),
+          borderRadius: BorderRadius.zero,
+        )),
+    shadowColor: MaterialStateProperty.all(categoryTextButtonColor),
+    backgroundColor: MaterialStateProperty.all(primaryColor),
+    foregroundColor: MaterialStateProperty.all(rightTextColor),
+    textStyle: MaterialStateProperty.all(
+      const TextStyle(
+        fontSize: 26,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    padding: MaterialStateProperty.all(
+        const EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
+  );
+
+  static final ButtonStyle welcomeSignUpButtonStyle = ButtonStyle(
+
+    shape:MaterialStateProperty.all<OutlinedBorder>(
+        const RoundedRectangleBorder(
+          side: BorderSide(
+            width: 2,
+            color: Colors.black,
+          ),
+          borderRadius: BorderRadius.zero,
+        )),
+    shadowColor: MaterialStateProperty.all(categoryTextButtonColor),
+   // backgroundColor: MaterialStateProperty.all(primaryColor),
+    foregroundColor: MaterialStateProperty.all(Colors.black),
+    textStyle: MaterialStateProperty.all(
+      const TextStyle(
+        fontSize: 26,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    padding: MaterialStateProperty.all(
+        const EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
+  );
+
+  static final ButtonStyle SignOutButtonStyle = ButtonStyle(
+
+    shape:MaterialStateProperty.all<OutlinedBorder>(
+        const RoundedRectangleBorder(
+          side: BorderSide(
+            width: 2,
+            color: Colors.black,
+          ),
+          borderRadius: BorderRadius.zero,
+        )),
+    shadowColor: MaterialStateProperty.all(categoryTextButtonColor),
+    backgroundColor: MaterialStateProperty.all(primaryColor),
+    foregroundColor: MaterialStateProperty.all(rightTextColor),
+    textStyle: MaterialStateProperty.all(
+      const TextStyle(
+        fontSize: 26,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    padding: MaterialStateProperty.all(
+        const EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
+  );
+
 
 
 }

@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:geoquiz/models/answer.dart';
-import 'package:geoquiz/question/widgets/row_of_fail.dart';
 import 'package:geoquiz/question/widgets/wrong_list_of_answers.dart';
 
 import '../../generated/l10n.dart';
@@ -30,9 +29,9 @@ class WrongAnswerPage extends StatelessWidget {
         children: [
           MainQuestionInfo(questionInfo: questionInfo,),
           WrongListOfAnswers(answers: answers, checkIndex: checkIndex),
-          SizedBox(height: 8,),
-          RowOfFail(),
-          SizedBox(height: 8,),
+          const SizedBox(height: 8,),
+         // RowOfFail(),
+          const SizedBox(height: 32,),
           RestartButton(questionNumber: currentQuestionNumber, questionInfo: questionInfo.categoryID,),
         ],
       ),

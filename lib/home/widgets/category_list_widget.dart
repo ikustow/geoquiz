@@ -14,7 +14,7 @@ class CategoryList extends StatelessWidget {
     return ListView.builder(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(16),
         itemCount: categories.length,
         itemBuilder: (BuildContext context, int index) {
           return Card(
@@ -31,6 +31,11 @@ class CategoryList extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(categories[index].description,
                       style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(1.0),
+                  child: Text(categories[index].level,
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal)),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),

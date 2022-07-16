@@ -2,8 +2,9 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geoquiz/authentication/bloc/auth_bloc.dart';
-import 'package:geoquiz/authentication/details_page.dart';
-import 'package:geoquiz/authentication/sign_in.dart';
+import 'package:geoquiz/authentication/pages/details_page.dart';
+import 'package:geoquiz/authentication/pages/sign_in.dart';
+import 'package:geoquiz/theme.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -98,8 +99,9 @@ class _SignUpState extends State<SignUp> {
                                 height: 12,
                               ),
                               SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.7,
+                                width: MediaQuery.of(context).size.width * 0.5,
                                 child: ElevatedButton(
+                                  style: AppButtonStyle.SignInButtonStyle,
                                   onPressed: () {
                                     _createAccountWithEmailAndPassword(context);
                                   },
@@ -109,6 +111,9 @@ class _SignUpState extends State<SignUp> {
                             ],
                           ),
                         ),
+                      ),
+                      const SizedBox(
+                        height: 12,
                       ),
                       const Text("Already have an account?"),
                       OutlinedButton(
