@@ -15,9 +15,13 @@ class RestartButton extends StatelessWidget {
     return   TextButton(
       style: AppButtonStyle.GoNexttButton,
       onPressed: () {
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) =>  QuestionPage(category: questionInfo, id: questionInfo, questionNumber:questionNumber,)),
+          PageRouteBuilder(
+            pageBuilder: (context, animation1, animation2) =>QuestionPage(category: questionInfo, id: questionInfo, questionNumber:questionNumber,),
+            transitionDuration: Duration.zero,
+            reverseTransitionDuration: Duration.zero,
+          ),
         );
       }, child: Text(S.of(context).restart_title,),
     );

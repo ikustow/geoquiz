@@ -31,3 +31,4 @@ Tabs
 - About - more details and Sign out option
 
 ### Quiz process
+<img src="https://user-images.githubusercontent.com/36426291/179363966-d566f3b7-17db-4d8a-a479-26b4429837a9.gif" width="250" height="500">
