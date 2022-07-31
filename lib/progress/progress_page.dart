@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:geoquiz/models/progress_value_details.dart';
 import 'package:geoquiz/progress/bloc/progress_bloc.dart';
 import 'package:geoquiz/progress/widgets/progress_list_widget.dart';
 
@@ -37,9 +36,7 @@ class ProgressPage extends StatelessWidget {
               progressValues: state.progress,
             );
           }
-          return Container(
-            child: CustomErrorWidget(),
-          );
+          return const CustomErrorWidget();
         }),
       ),
     );

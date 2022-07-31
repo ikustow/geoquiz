@@ -10,7 +10,7 @@ class WelcomeTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 24,),
+        const SizedBox(height: 24,),
         RichText(
           text: TextSpan(
             style: TextStyles.welcomeTextStyle,
@@ -20,7 +20,7 @@ class WelcomeTextWidget extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 24,),
+        const SizedBox(height: 24,),
       ],
     );
   }

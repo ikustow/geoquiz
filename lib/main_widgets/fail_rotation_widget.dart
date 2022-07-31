@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class FailRotationWidget extends StatefulWidget {
+  const FailRotationWidget({Key? key}) : super(key: key);
+
+  @override
   FailRotationWidgetState createState() => FailRotationWidgetState();
 }
 
@@ -9,6 +12,7 @@ class FailRotationWidgetState extends State<FailRotationWidget> with TickerProvi
   late AnimationController _controller;
   late Animation<double> _animation;
 
+  @override
   initState() {
     super.initState();
     _controller = AnimationController(
@@ -29,13 +33,14 @@ class FailRotationWidgetState extends State<FailRotationWidget> with TickerProvi
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 60,
       child: RotationTransition(
           turns: _animation,
-          alignment: Alignment(0.1, 0.1),
-          child: Icon(Icons.add_rounded, color: Colors.deepOrange, size: 60,)
+          alignment: const Alignment(0.1, 0.1),
+          child: const Icon(Icons.add_rounded, color: Colors.deepOrange, size: 60,)
       ),
     );
   }

@@ -19,10 +19,8 @@ class _AnimatedWelcomeTextState extends State<AnimatedWelcomeText> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            child: Center(
-              child: _rotate(),
-            ),
+          Center(
+            child: _rotate(),
           ),
         ],
       ),

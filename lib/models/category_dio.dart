@@ -1,8 +1,4 @@
-// To parse this JSON data, do
-//
-//     final categoryDio = categoryDioFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 class CategoryDio {

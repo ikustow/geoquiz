@@ -16,7 +16,6 @@ class BottomNavigationBarWidget extends StatefulWidget {
 class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
   late int selectedIndex = widget.index;
 
-  @override
   void onItemTapped(int index) {
     setState(() {
       selectedIndex = index;
@@ -38,25 +37,26 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
 
       currentIndex: selectedIndex,
       selectedFontSize: 18,
-      selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+      selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
       selectedItemColor: Colors.black,
 
       items:  <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.home_outlined),
+          icon: const Icon(Icons.home_outlined),
           label: S.of(context).home_bar_title,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.bar_chart_outlined),
+          icon: const Icon(Icons.bar_chart_outlined),
           label: S.of(context).progress_bar_title,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.info_outline),
+          icon: const Icon(Icons.info_outline),
           label:  S.of(context).about_bar_title,
         ),
       ],

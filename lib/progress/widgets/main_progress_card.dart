@@ -17,7 +17,7 @@ class MainProgressCard extends StatelessWidget {
           color: Colors.black,
         ),
       ),
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       color: Colors.white,
       shadowColor: Colors.blueGrey,
       elevation: 5,
@@ -27,11 +27,11 @@ class MainProgressCard extends StatelessWidget {
           ListTile(
             title: Text(
               description,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             subtitle: Text(
               level,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
         ],

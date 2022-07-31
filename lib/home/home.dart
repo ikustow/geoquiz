@@ -26,34 +26,32 @@ class HomePage extends StatelessWidget {
             S.of(context).home_appbar_title,
           ),
         ),
-        bottomNavigationBar: BottomNavigationBarWidget(index: 0,),
+        bottomNavigationBar: const BottomNavigationBarWidget(index: 0,),
         body: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
             if (state is HomeLoadingState) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }
             if (state is HomeLoadedState) {
               return Column(
                 children: [
-                  WelcomeTextWidget(),
+                  const WelcomeTextWidget(),
                   CategoryList(
                     categories: state.categories,
                   ),
-                  SizedBox(width: 10.0, height: 36.0),
-                  AnimatedWelcomeText(),
+                  const SizedBox(width: 10.0, height: 36.0),
+                  const AnimatedWelcomeText(),
                 ],
               );
             }
             if (state is HomeNoInternetState) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }
-            return Container(
-              child: CustomErrorWidget(),
-            );
+            return const CustomErrorWidget();
           },
         ),
       ),

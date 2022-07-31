@@ -25,20 +25,20 @@ class CompletePage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              '${category}',
+              '$category',
               style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
             Text(
-              '${S.of(context).category_text}',
+              S.of(context).category_text,
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.normal),
               textAlign: TextAlign.center,
             ),
           ],
         ),
       ),
-      bottomNavigationBar:  BottomNavigationBarWidget(index: 0,),
+      bottomNavigationBar:  const BottomNavigationBarWidget(index: 0,),
     );
   }
 }

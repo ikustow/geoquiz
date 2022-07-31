@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:geoquiz/authentication/pages/details_page.dart';
 import 'package:geoquiz/authentication/pages/sign_in.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:geoquiz/repositories/firebase_auth_repository.dart';
@@ -40,7 +39,7 @@ class MyApp extends StatelessWidget {
             authRepository: RepositoryProvider.of<AuthRepository>(context),
           ),
           child: MaterialApp(
-            localizationsDelegates:[
+            localizationsDelegates:const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
@@ -64,10 +63,10 @@ class MyApp extends StatelessWidget {
                   builder: (context, snapshot) {
                     // If the snapshot has user data, then they're already signed in. So Navigating to the Dashboard.
                     if (snapshot.hasData) {
-                      return HomePage();
+                      return const HomePage();
                     }
                     // Otherwise, they're not signed in. Show the sign in page.
-                    return SignIn();
+                    return const SignIn();
                   }),
             ),
           ),

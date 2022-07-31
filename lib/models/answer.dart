@@ -1,5 +1,3 @@
-import 'package:geoquiz/models/category.dart';
-import 'package:geoquiz/models/question.dart';
 
 class Answer{
   final String description;

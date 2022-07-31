@@ -11,7 +11,7 @@ class SignOutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: AppButtonStyle.SignOutButtonStyle,
+      style: AppButtonStyle.signOutButtonStyle,
       child: Text(S.of(context).sign_out_button_title,),
       onPressed: () {
         // Signing out the user

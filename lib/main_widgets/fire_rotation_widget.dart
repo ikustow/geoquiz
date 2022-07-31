@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class FireRotationWidget extends StatefulWidget {
+  const FireRotationWidget({Key? key}) : super(key: key);
+
+  @override
   FireRotationWidgetState createState() => FireRotationWidgetState();
 }
 
@@ -9,6 +12,7 @@ class FireRotationWidgetState extends State<FireRotationWidget> with TickerProvi
   late AnimationController _controller;
   late Animation<double> _animation;
 
+  @override
   initState() {
     super.initState();
     _controller = AnimationController(
@@ -29,13 +33,14 @@ class FireRotationWidgetState extends State<FireRotationWidget> with TickerProvi
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 60,
       child: RotationTransition(
           turns: _animation,
-          alignment: Alignment(0.1, 0.1),
-          child: Icon(Icons.whatshot, color: Colors.deepOrange, size: 60,)
+          alignment: const Alignment(0.1, 0.1),
+          child: const Icon(Icons.whatshot, color: Colors.deepOrange, size: 60,)
       ),
     );
   }

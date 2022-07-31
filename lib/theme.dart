@@ -13,7 +13,7 @@ abstract class AppButtonStyle {
   static  Color? defaultButtonColor = Colors.amber[100];
   static const Color categoryTextButtonColor = Colors.black87;
 
-  static final ButtonStyle RightButton = ButtonStyle(
+  static final ButtonStyle rightButton = ButtonStyle(
 
     shape:MaterialStateProperty.all<OutlinedBorder>(
         const RoundedRectangleBorder(
@@ -37,7 +37,7 @@ abstract class AppButtonStyle {
   );
 
 
-  static final ButtonStyle WrongButton = ButtonStyle(
+  static final ButtonStyle wrongButton = ButtonStyle(
 
     shape:MaterialStateProperty.all<OutlinedBorder>(
         const RoundedRectangleBorder(
@@ -62,7 +62,7 @@ abstract class AppButtonStyle {
 
 
 
-  static final ButtonStyle DefaultButton = ButtonStyle(
+  static final ButtonStyle defaultButton = ButtonStyle(
 
     shape:MaterialStateProperty.all<OutlinedBorder>(
         const RoundedRectangleBorder(
@@ -104,10 +104,10 @@ abstract class AppButtonStyle {
       ),
     ),
     padding: MaterialStateProperty.all(
-        EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
+        const EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
   );
 
-  static final ButtonStyle GoNexttButton = ButtonStyle(
+  static final ButtonStyle goNexttButton = ButtonStyle(
 
     shape:MaterialStateProperty.all<OutlinedBorder>(
         const RoundedRectangleBorder(
@@ -130,7 +130,7 @@ abstract class AppButtonStyle {
         const EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
   );
 
-  static final ButtonStyle SignInButtonStyle = ButtonStyle(
+  static final ButtonStyle signInButtonStyle = ButtonStyle(
 
     shape:MaterialStateProperty.all<OutlinedBorder>(
         const RoundedRectangleBorder(
@@ -176,7 +176,7 @@ abstract class AppButtonStyle {
         const EdgeInsets.symmetric(horizontal: 24, vertical: 8)),
   );
 
-  static final ButtonStyle SignOutButtonStyle = ButtonStyle(
+  static final ButtonStyle signOutButtonStyle = ButtonStyle(
 
     shape:MaterialStateProperty.all<OutlinedBorder>(
         const RoundedRectangleBorder(
@@ -208,13 +208,13 @@ abstract class TextStyles {
 
   static const Color welcomeTextolor = Colors.black87;
 
-  static final TextStyle welcomeTextStyle =  TextStyle(
+  static const TextStyle welcomeTextStyle =  TextStyle(
     fontSize: 22,
     color: welcomeTextolor,
     fontWeight: FontWeight.normal,
   );
 
-  static final TextStyle userNameTextStyle =  TextStyle(
+  static const TextStyle userNameTextStyle =  TextStyle(
     fontSize: 22,
     color: welcomeTextolor,
     fontWeight: FontWeight.bold,

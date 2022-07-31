@@ -1,8 +1,5 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:geoquiz/models/current_progress.dart';
 import 'package:geoquiz/models/progress_value_details.dart';
 import 'package:geoquiz/services/airtable_service.dart';
 

@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:dart_airtable/dart_airtable.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:geoquiz/consts.dart';
 import 'package:geoquiz/models/category.dart';
 import 'package:geoquiz/models/category_dio.dart';
@@ -98,7 +95,7 @@ class AirtableService {
     for (var record in curProgress.records) {
       final category = record.fields.category;
 
-      final Inforesponse = await Dio().get(
+      final infoResponse = await Dio().get(
         'https://api.airtable.com/v0/$projectBase/$recordNameCategories',
         queryParameters: {
           'filterByFormula': 'SEARCH("$category",{Name})'
@@ -112,7 +109,7 @@ class AirtableService {
         ),
       );
 
-      final details = CategoryDio.fromJson(Inforesponse.data);
+      final details = CategoryDio.fromJson(infoResponse.data);
 
       final progressListValue = ProgressValueDetails(
         numberOfTasks: details.records.first.fields.numberOfTasks,
@@ -152,7 +149,7 @@ class AirtableService {
   getAnswerValues(
     AirtableRecord airtableElement,
   ) {
-    var details = new Map();
+    var details = {};
 
     final question = airtableElement.getField("Questions");
     if (question?.value != null) {
@@ -181,7 +178,7 @@ class AirtableService {
   }
 
   getQuestionValues(AirtableRecord airtableElement) {
-    var details = new Map();
+    var details = {};
 
     final question = airtableElement.getField("Question");
     if (question?.value != null) {
@@ -239,7 +236,7 @@ class AirtableService {
       data: {
         'records': [
           {
-            'id': '$id',
+            'id': id,
             'fields': {
               'Category': '$fieldCategory',
               'Question': fieldProgressNumber,
@@ -253,6 +250,7 @@ class AirtableService {
   }
 
   Future<int> getAirtableCategoriesDio(catName) async {
+
     final response = await Dio().get(
       'https://api.airtable.com/v0/$projectBase/$recordNameCategories',
       queryParameters: {
@@ -293,11 +291,11 @@ getOrCreateUserProgress(catName) async {
   final curProgress = CurrentProgress.fromJson(response.data);
 
   if (curProgress.records.isNotEmpty) {
-    curProgress.records.forEach((value) {
+    for (var value in curProgress.records) {
       if (value.fields.user == currenUser) {
         currentQuestion = value.fields.question;
       }
-    });
+    }
   } else {
     final response = await Dio().post(
       'https://api.airtable.com/v0/$projectBase/$recordNameCurrentProgress',

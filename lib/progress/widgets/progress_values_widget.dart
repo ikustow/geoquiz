@@ -37,20 +37,20 @@ class ProgressValuesWidget extends StatelessWidget {
                   height: 60.0,
                   child: ListTile(
                     leading: (extraindex < currentValue)
-                        ? Icon(Icons.star, color: Colors.amber, size: 45)
-                        : Icon(Icons.star, color: Colors.grey, size: 45),
+                        ? const Icon(Icons.star, color: Colors.amber, size: 45)
+                        : const Icon(Icons.star, color: Colors.grey, size: 45),
                     tileColor: (extraindex < currentValue)
                         ? Colors.green
                         : Colors.deepOrangeAccent[100],
                     title: (extraindex < currentValue)
                         ? Text(
                       S.of(context).done_task_title,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 16, fontWeight: FontWeight.bold),
                     )
                         : Text(
                       S.of(context).not_done_task_title,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),

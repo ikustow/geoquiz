@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:geoquiz/main_widgets/fail_rotation_widget.dart';
+import 'package:geoquiz/main_widgets/fire_rotation_widget.dart';
 
-class RowOfFail extends StatelessWidget {
-  const RowOfFail({Key? key}) : super(key: key);
+class GameRowOfFire extends StatelessWidget {
+  const GameRowOfFire({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
+      children: const [
         SizedBox(height: 16,),
-        FailRotationWidget(),
+        FireRotationWidget(),
         SizedBox(width: 8,),
-        FailRotationWidget(),
+        FireRotationWidget(),
         SizedBox(width: 8,),
-        FailRotationWidget(),
+        FireRotationWidget(),
       ],
     );
   }

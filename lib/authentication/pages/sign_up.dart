@@ -1,4 +1,3 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geoquiz/authentication/bloc/auth_bloc.dart';
@@ -37,7 +36,7 @@ class _SignUpState extends State<SignUp> {
             // Navigating to the dashboard screen if the user is authenticated
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
-                builder: (context) => DetailsPageWidget(),
+                builder: (context) => const DetailsPageWidget(),
               ),
             );
           }
@@ -100,8 +99,9 @@ class _SignUpState extends State<SignUp> {
                               ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.5,
+
                                 child: ElevatedButton(
-                                  style: AppButtonStyle.SignInButtonStyle,
+                                  style: AppButtonStyle.signInButtonStyle,
                                   onPressed: () {
                                     _createAccountWithEmailAndPassword(context);
                                   },

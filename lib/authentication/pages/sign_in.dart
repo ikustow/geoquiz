@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:geoquiz/authentication/pages/sign_up.dart';
 import 'package:geoquiz/home/home.dart';
 import 'package:geoquiz/theme.dart';
 import '../../generated/l10n.dart';
@@ -67,7 +66,7 @@ class _SignInState extends State<SignIn> {
                       children: [
                         Text(
                           S.of(context).sign_welcome_title,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 38,
                             fontWeight: FontWeight.bold,
                           ),
@@ -85,7 +84,7 @@ class _SignInState extends State<SignIn> {
                                   controller: _emailController,
                                   decoration: InputDecoration(
                                     hintText: S.of(context).hint_email_text,
-                                    border: OutlineInputBorder(),
+                                    border: const OutlineInputBorder(),
                                   ),
                                 ),
                                 const SizedBox(
@@ -96,7 +95,7 @@ class _SignInState extends State<SignIn> {
                                   controller: _passwordController,
                                   decoration: InputDecoration(
                                     hintText: S.of(context).hint_password_text,
-                                    border: OutlineInputBorder(),
+                                    border: const OutlineInputBorder(),
                                   ),
                                 ),
                                 const SizedBox(
@@ -106,7 +105,7 @@ class _SignInState extends State<SignIn> {
                                   width:
                                       MediaQuery.of(context).size.width * 0.5,
                                   child: ElevatedButton(
-                                    style: AppButtonStyle.SignInButtonStyle,
+                                    style: AppButtonStyle.signInButtonStyle,
                                     onPressed: () {
                                       _authenticateWithEmailAndPassword(
                                           context);
@@ -133,7 +132,7 @@ class _SignInState extends State<SignIn> {
                         Text(
                           S.of(context).account_check_title,
                         ),
-                        WelcomeSignUpButton(),
+                        const WelcomeSignUpButton(),
                       ],
                     ),
                   ),

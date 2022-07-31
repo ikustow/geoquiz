@@ -18,7 +18,7 @@ class ProgressLoadingState extends ProgressState {
 class ProgressLoadedState extends ProgressState {
   final List<ProgressValueDetails> progress;
 
-  ProgressLoadedState(this.progress);
+  const ProgressLoadedState(this.progress);
   @override
   // TODO: implement props
   List<Object?> get props => [progress];

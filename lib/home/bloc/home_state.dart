@@ -18,7 +18,7 @@ class HomeLoadingState extends HomeState {
 class HomeLoadedState extends HomeState {
   final List<Category> categories;
 
-  HomeLoadedState(this.categories);
+  const HomeLoadedState(this.categories);
   @override
   // TODO: implement props
   List<Object?> get props => [categories];

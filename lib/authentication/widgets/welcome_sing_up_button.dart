@@ -20,7 +20,7 @@ class WelcomeSignUpButton extends StatelessWidget {
       },
       child: Text(
         S.of(context).sign_up_button_title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.bold,
         ),

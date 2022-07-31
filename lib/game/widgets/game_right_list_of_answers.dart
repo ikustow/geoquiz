@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:geoquiz/models/answer.dart';
+import 'package:geoquiz/theme.dart';
 
-import '../../theme.dart';
-
-class RightListOfAnswers extends StatelessWidget {
+class GameRightListOfAnswers extends StatelessWidget {
   final List <Answer> answers;
-  const RightListOfAnswers({Key? key, required this.answers,}) : super(key: key);
+  const GameRightListOfAnswers({Key? key, required this.answers,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +16,9 @@ class RightListOfAnswers extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return ElevatedButton(
               style: (answers[index].right == true)
-                  ? AppButtonStyle.RightButton
-                  : AppButtonStyle.DefaultButton,
-              child:Text(answers[index].description, style: TextStyle(fontSize: 22)),
+                  ? AppButtonStyle.rightButton
+                  : AppButtonStyle.defaultButton,
+              child:Text(answers[index].description, style: const TextStyle(fontSize: 22)),
               onPressed: (){},
             );
           }
