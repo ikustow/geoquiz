@@ -16,10 +16,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc(this._airtableService, this._connectivityService) : super(HomeLoadingState()) {
     _connectivityService.connectivityStream.stream.listen((event) {
       if (event == ConnectivityResult.none) {
-        print('no internet');
+
         add(NoInternetEvent());
       } else {
-        print('yes internet');
+
      //   add(LoadApiEvent());
       }
     });

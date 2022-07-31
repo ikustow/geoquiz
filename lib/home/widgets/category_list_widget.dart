@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:geoquiz/game/pages/game.dart';
 import '../../generated/l10n.dart';
 import '../../models/category.dart';
-import '../../question/pages/question_page.dart';
+
 import '../../theme.dart';
 
 class CategoryList extends StatelessWidget {
@@ -45,7 +46,7 @@ class CategoryList extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => QuestionPage(
+                            builder: (context) => GamePage(
                               category: categories[index].description,
                               id: categories[index].name,
                               questionNumber:

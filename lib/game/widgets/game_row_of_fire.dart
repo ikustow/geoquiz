@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geoquiz/main_widgets/fire_rotation_widget.dart';
 
-class RowOfFire extends StatelessWidget {
-  const RowOfFire({Key? key}) : super(key: key);
+class GameRowOfFire extends StatelessWidget {
+  const GameRowOfFire({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

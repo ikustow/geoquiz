@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geoquiz/main_widgets/fail_rotation_widget.dart';
 
-class RowOfFail extends StatelessWidget {
-  const RowOfFail({Key? key}) : super(key: key);
+class GameRowOfFail extends StatelessWidget {
+  const GameRowOfFail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

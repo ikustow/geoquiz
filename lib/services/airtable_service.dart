@@ -253,6 +253,7 @@ class AirtableService {
   }
 
   Future<int> getAirtableCategoriesDio(catName) async {
+
     final response = await Dio().get(
       'https://api.airtable.com/v0/$projectBase/$recordNameCategories',
       queryParameters: {
